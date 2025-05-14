@@ -83,13 +83,18 @@ const Posts: React.FC<PostProps> = ({ post }) => {
 
   return (
     <div>
-      <h1>{post.title}</h1>
-      <p>{post.description}</p>
-      <p>{post.username}</p>
-      <button onClick={hasUserLiked ? removeLike : addLike}>
-        {hasUserLiked ? <>&#128078;</> : <>&#128077;</>}
-      </button>
-      {likes && likes.length > 0 && <p>Likes: {likes.length}</p>}
+      <h1 className="text-blue-500 font-bold text-xl py-3">{post.title}</h1>
+      <p className="py-2">{post.description}</p>
+      <div className="flex gap-3 items-center justify-between py-3">
+        <p className="text-sm italic">- {post.username}</p>
+        <div className="flex gap-3">
+          {likes && likes.length > 0 && <p>Likes: {likes.length}</p>}
+          <button onClick={hasUserLiked ? removeLike : addLike}>
+            {hasUserLiked ? <>&#128078;</> : <>&#128077;</>}
+          </button>
+        </div>
+      </div>
+      <hr />
     </div>
   );
 };
